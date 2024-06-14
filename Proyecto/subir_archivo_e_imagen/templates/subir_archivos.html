@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous" />
+    <title>Subir Archivos</title>
+    <style>
+      #bottomRightButton {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: mediumseagreen;
+        color: black;
+        border: black;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body style="background-color: lightblue;">
+    <div class="container text-center">
+      <div class="row justify-content-md-center">
+        <div class="col-md-12">
+          <h2 class="my-4">Cargar Archivos</h2>
+          <hr />
+        </div>
+        <div class="col-md-12">
+          <form
+            action="{% url 'upload' %}"
+            method="post"
+            enctype="multipart/form-data">
+            {% csrf_token %} {{ form.as_p }}
+            <button class="btn btn-primary my-4" type="submit">
+              Procesar archivos
+            </button>          
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <a href="{% url 'listarData' %}" target="_blank" id="bottomRightButton">
+      Ver archivos
+    </a>
+  </body>
+</html>
